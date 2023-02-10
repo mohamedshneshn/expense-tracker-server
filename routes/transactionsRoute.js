@@ -5,7 +5,14 @@ const moment = require('moment');
 
 
 
-
+router.get('/all-transactions', (req, res) => {  //to get all transactions from database
+    Transaction
+        .find()
+        .sort({ date: -1 })
+        .then(transactions => res.json(transactions))
+        .catch(err => console.log(err));
+}
+);
 router.post('/user-transactions', (req, res) => {  //to get all transactions from database for a particular user
 //    console.log(req.body.customDate);   // 1, 7, 30, 90, 180, 365, custom
 //    console.log(req.body.selectedCustomDate);  // [2020-01-01T00:00:00.000Z, 2020-01-31T00:00:00.000Z]
